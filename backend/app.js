@@ -15,6 +15,16 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 
+// Solve CORS
+app.use(cors({credentials: true, origin: "http//loclahost:3000"}))
+
+//upload diretório
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
+
+
+// conexao banco de dados
+require("./config/db.js")
+
 // routes
 
 const router = require("./routes/Router")
