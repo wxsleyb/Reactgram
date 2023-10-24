@@ -18,7 +18,7 @@ const connectDatabase = async () => {
     //mongoose.set("useNewUrlParser", true);
     
     await mongoose.connect(process.env.URI);
-    console.log("connected to database");
+    console.log("Conectado ao banco de dados");
   } catch (error) {
     console.log(error);
     process.exit(1);
