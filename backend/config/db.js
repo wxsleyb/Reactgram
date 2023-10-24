@@ -1,5 +1,6 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
+const mongoose = require("mongoose")
 
 const uri = process.env.URI
 
@@ -12,16 +13,15 @@ const cliente = new MongoClient(uri, {
   }
 });
 
-async function executar() {
+const connectDatabase = async () => {
   try {
-    // Conecte o cliente ao servidor (opcional a partir da versão 4.7)
-    await cliente.connect();
-    // Envie um ping para confirmar uma conexão bem-sucedida
-    await cliente.db("admin").command({ ping: 1 });
-    console.log("Você se conectou com sucesso ao MongoDB!");
-  } finally {
-    // Garante que o cliente será fechado quando você terminar/ocorrer erro
-    await cliente.close();
+    //mongoose.set("useNewUrlParser", true);
+    
+    await mongoose.connect(process.env.URI);
+    console.log("connected to database");
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
   }
-}
-executar().catch(console.dir);
+};
+connectDatabase();
