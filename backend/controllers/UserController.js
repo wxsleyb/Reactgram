@@ -15,15 +15,17 @@ const generateToken = (id) => {
 }
 
 // registrar usuario e logar
-// ...
 
 const register = async (req, res) => {
     const { name, email, password } = req.body;
 
     try {
         // Verificar se o usuário já existe
-        const user = await User.findOne({ email }).maxTimeMS(30000);
-        //const user = User.findOne({email: req.body.email })
+        //const user = await User.findOne({ email }).maxTimeMS(30000);
+        const user = await User.findOne({ email });
+        //const user = await User.findOne({email: req.body.email })
+        //const user = await User.findOne({ email })
+
 
         if (user) {
             return res.status(422).json({ errors: ["Por favor, utilize outro e-mail"] });

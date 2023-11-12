@@ -1,20 +1,20 @@
-import {api, requestConfig} from '../utils/config'
+import { api, requestConfig } from '../utils/config'
 
 // Register um usuario no sistema
 
 
-const register = async(data) =>{
+const register = async (data) => {
     const config = requestConfig("POST", data)
 
     try {
         const res = await fetch(api + "/users/register", config)
-        .then((res) => res.json())
-        .catch((err) => err)
+            .then((res) => res.json())
+            .catch((err) => err)
 
-        if(res){
+        if (res) {
             localStorage.setItem("user", JSON.stringify(res))
         }
-    }catch (error){
+    } catch (error) {
         console.log(error)
     }
 
