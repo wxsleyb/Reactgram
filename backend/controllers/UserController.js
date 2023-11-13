@@ -21,8 +21,8 @@ const register = async (req, res) => {
 
     try {
         // Verificar se o usuário já existe
-        //const user = await User.findOne({ email }).maxTimeMS(30000);
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email }).maxTimeMS(30000);
+        //const user = await User.findOne({ email });
         //const user = await User.findOne({email: req.body.email })
         //const user = await User.findOne({ email })
 

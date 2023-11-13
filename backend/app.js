@@ -16,7 +16,8 @@ app.use(express.urlencoded({extended:false}))
 
 
 // Solve CORS
-app.use(cors({credentials: true, origin: "http//loclahost:3000"}))
+app.use(cors({ origin: 'http://localhost:3000' }));
+
 
 //upload diretório
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
@@ -34,6 +35,7 @@ app.use(router)
 app.listen(port, () =>{
     console.log(`App rodando na porta ${port}`)
 })
+
 
 
 
