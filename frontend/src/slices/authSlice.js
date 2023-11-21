@@ -45,13 +45,26 @@ export const authSlice = createSlice({
             state.loading=false
             state.success=true
             state.error=null
-            state.error=action.payload
+            state.user=action.payload
         }).addCase(register.rejected, (state,action)=>{
             state.loading=false
             state.error=action.payload
             state.user=null
         })
+        .addCase(logout.fulfilled, (state,action)=>{
+            state.loading=false
+            state.success=true
+            state.error=null
+            state.user=null
+        })
     }
+})
+
+
+//deslogar um usuario
+
+export const logout = createAsyncThunk("auth/logout", async ()=>{
+    await authService.logout()
 })
 
 export const {reset} = authSlice.actions
