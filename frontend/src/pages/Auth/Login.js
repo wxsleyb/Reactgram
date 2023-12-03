@@ -35,7 +35,7 @@ const Login = () => {
   }
   useEffect(()=>{
     dispatch(reset())
-  }, dispatch)
+  }, [dispatch])
 
   // limpar todos os states de autenticação
 
