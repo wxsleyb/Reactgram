@@ -8,7 +8,7 @@ const publishPhoto = async(data,token) =>{
 
     try {
         const res = await fetch(api + "/photos", config)
-            .then((res) => res.json)
+            .then((res) => res.json())
             .catch((err)=> err)
 
             return res
@@ -18,6 +18,8 @@ const publishPhoto = async(data,token) =>{
 }
 
 
-const photoService = {}
+const photoService = {
+    publishPhoto
+}
 
 export default photoService;
