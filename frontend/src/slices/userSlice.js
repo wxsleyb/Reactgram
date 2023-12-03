@@ -100,7 +100,7 @@ export const userSlice = createSlice({
         state.loading = false;
         state.success = true;
         state.error = null;
-        state.user = action.payload;
+        state.photos = action.payload;
       });
   },
 });
