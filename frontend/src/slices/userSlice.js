@@ -42,7 +42,7 @@ export const updateProfile = createAsyncThunk(
   }
 );
 
-// Get user details
+// pegar os detalhes do usuario pelo id
 export const getUserDetails = createAsyncThunk(
   "user/get",
   async (id, thunkAPI) => {
