@@ -49,7 +49,7 @@ const Photo = () => {
   return (
     <div id="photo">
       <PhotoItem photo={photo} />
-      <likeContainer photo={photo} user={user} handleLike={handleLike}/>
+      <LikeContainer photo={photo} user={user} handleLike={handleLike}/>
     </div>
   )
 }
