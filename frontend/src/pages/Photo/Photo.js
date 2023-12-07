@@ -7,6 +7,7 @@ import { uploads } from '../../utils/config'
 import Message from '../../components/Message'
 import { Link } from 'react-router-dom'
 import PhotoItem from '../../components/PhotoItem'
+import LikeContainer from '../../components/LikeContainer'
 
 //hooks
 import { useEffect, useState } from 'react'
@@ -16,7 +17,8 @@ import { useParams } from 'react-router-dom'
 
 
 //redux
-import { getPhoto } from '../../slices/photoSlice'
+import { getPhoto, like } from '../../slices/photoSlice'
+
 
 
 const Photo = () => {
@@ -37,14 +39,17 @@ const Photo = () => {
     dispatch(getPhoto(id));
   }, [dispatch, id]);
 
-  // like e comentario
+  const handleLike = () =>{
+    dispatch(like(photo._id))
+  }
 
   if (loading) {
     return <p>Carregando...</p>
   }
   return (
-    <div id='photo'>
+    <div id="photo">
       <PhotoItem photo={photo} />
+      <likeContainer photo={photo} user={user} handleLike={handleLike}/>
     </div>
   )
 }
