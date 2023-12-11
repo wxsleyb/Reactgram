@@ -150,13 +150,14 @@ export const photoSlice = createSlice({
           })
           .addCase(getPhoto.pending, (state) => {
             state.loading = true;
-            state.error = false;
+            state.error = null;
           })
           .addCase(getPhoto.fulfilled, (state, action) => {
+            console.log(action.payload);
             state.loading = false;
             state.success = true;
             state.error = null;
-            state.photos = action.payload;
+            state.photo = action.payload;
           })
           .addCase(deletePhoto.pending, (state) => {
             state.loading = true;
@@ -210,7 +211,7 @@ export const photoSlice = createSlice({
             }
     
             state.photos.map((photo) => {
-              if (photo._id === action.payload.photo.photoId) {
+              if (photo._id === action.payload.photoId) {
                 return photo.likes.push(action.payload.userId)
               }
               return photo;

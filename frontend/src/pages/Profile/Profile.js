@@ -199,7 +199,7 @@ const Profile = () => {
         <h2>Fotos publicadas:</h2>
         <div className="photos-container">
         {
-      Array.isArray(photos) &&
+      Array.isArray(photos) && photos.length > 0 &&
         photos.map((photo) => (
           <div className="photo" key={photo._id}>
             {" "}

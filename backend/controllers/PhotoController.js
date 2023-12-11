@@ -9,8 +9,7 @@ const insertPhoto = async(req, res)=>{
     const {title} = req.body
     const image = req.file.filename
     const reqUser = req.user
-    const user = await User.findById(new mongoose.Types.ObjectId(reqUser._id)).select("-password")
-    //create a photo
+    const user = await User.findById(reqUser._id);  
     //const user = await User.findById(reqUser._id)
     const newPhoto = await Photo.create({
         image,
@@ -83,19 +82,25 @@ const getUserPhotos = async (req,res)=>{
 
 // pegar foto por id
 
-const getPhotoById = async(req, res)=>{
+const getPhotoById = async (req, res) => {
+    try {
+        const { id } = req.params;
 
-    const {id} = req.params
+        const photo = await Photo.findById(new mongoose.Types.ObjectId(id));
 
-    const photo = await Photo.findById(new mongoose.Types.ObjectId(id))
+        // Check if the photo exists
+        if (!photo) {
+            return res.status(404).json({ errors: ["Foto não encontrada."] });
+        }
 
-    // checar se foto existe
-    if(!photo){
-        res.status(404).json({errors: ["Foto não encontrada."]})
-        return
+        res.status(200).json(photo);
+    } catch (error) {
+        // Handle any potential errors that might occur during database operations
+        console.error("Error fetching photo by ID:", error);
+        res.status(500).json({ errors: ["Erro interno do servidor."] });
     }
-    res.status(200).json(photo)
-}
+};
+
 
 // atualizar a foto
 
