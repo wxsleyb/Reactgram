@@ -4,6 +4,8 @@ import Home from './pages/Home/Home';
 import EditProfile from './pages/EditProfile/EditProfile';
 import Profile from './pages/Profile/Profile';
 import Photo from './pages/Photo/Photo';
+import Search from './pages/Search/Search';
+
 
 
 import './App.css';
@@ -17,6 +19,7 @@ import Footer from './components/Footer';
 
 //Hooks
 import { useAuth } from './hooks/useAuth';
+
 
 
 
@@ -41,6 +44,7 @@ function App() {
             <Route path='/users/:id'  element={auth ? <Profile/> : <Navigate to="/login"/> }/>
             <Route path='/login' element={!auth ? <Login/> : <Navigate to="/"/> }></Route>
             <Route path='/register' element={!auth ? <Register/> : <Navigate to="/"/>}></Route>
+            <Route path='/search'  element={auth ? <Search/> : <Navigate to="/login"/> }/>
             <Route path='/photos/:id'  element={auth ? <Photo/> : <Navigate to="/login"/> }/>
 
           </Routes>

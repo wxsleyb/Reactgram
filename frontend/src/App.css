@@ -1,3 +1,14 @@
 .container {
     min-height: 70vh;
+    
+}
+
+.body{
+    background-color: linear-gradient(to bottom, #ffcc00, #ff6699);
+}
+
+.App{
+    background-color: linear-gradient(to bottom, #ffcc00, #ff6699);
+
+
 }
